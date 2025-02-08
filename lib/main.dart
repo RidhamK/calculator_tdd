@@ -31,6 +31,13 @@ void main() {
     expect(calculator.add("7,8\n9"), 24);
   });
 
+  test('Support custom single-character delimiter', () {
+    expect(calculator.add("//;\n1;2;3"), 6);
+  });
+
+  test('Support custom multi-character delimiter', () {
+    expect(calculator.add("//***\n1***2***3"), 6);
+  });
 
   runApp(const MyApp());
 }
