@@ -11,6 +11,11 @@ class StringCalculator {
       }
     }
     List<String> parts = numbers.replaceAll("\n", delimiter).split(delimiter);
+    List<int> nums = parts.where((num) => num.isNotEmpty).map(int.parse).toList();
+    List<int> negatives = nums.where((num) => num < 0).toList();
+    if (negatives.isNotEmpty) {
+      throw Exception("negatives not allowed: ${negatives.join(', ')}");
+    }
     int sum = parts.where((num) => num.isNotEmpty).map(int.parse).reduce((a, b) => a + b);
     return sum;
   }
