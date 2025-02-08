@@ -25,6 +25,12 @@ void main() {
     expect(calculator.add("10,20,30,40"), 100);
   });
 
+  test('Numbers separated by new lines should be handled correctly', () {
+    expect(calculator.add("1\n2,3"), 6);
+    expect(calculator.add("4\n5\n6"), 15);
+    expect(calculator.add("7,8\n9"), 24);
+  });
+
 
   runApp(const MyApp());
 }
