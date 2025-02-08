@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'StringCalculator.dart';
+
 class CalculatorScreen extends StatefulWidget {
   const CalculatorScreen({super.key});
 
@@ -10,10 +12,14 @@ class CalculatorScreen extends StatefulWidget {
 class _CalculatorScreenState extends State<CalculatorScreen> {
   final TextEditingController _controller = TextEditingController();
   String _result = '';
+  final StringCalculator _calculator = StringCalculator();
 
   void _calculate() {
     try {
-
+      int sum = _calculator.add(_controller.text);
+      setState(() {
+        _result = 'Result: $sum';
+      });
     } catch (e) {
       setState(() {
         _result = 'Error: ${e.toString()}';
