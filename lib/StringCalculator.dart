@@ -1,8 +1,8 @@
 class StringCalculator {
   int add(String numbers) {
     if (numbers.isEmpty) return 0;
-
-    List<String> parts = numbers.split(RegExp(r'[,\\n]+'));
+    String delimiter = ",";
+    List<String> parts = numbers.replaceAll("\n", delimiter).split(delimiter);
     int sum = 0;
 
     for (String num in parts) {
