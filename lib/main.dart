@@ -51,6 +51,22 @@ void main() {
     expect(() => calculator.add("5,-1,2,-4"), throwsA(predicate((e) => e.toString().contains("negatives not allowed: -1, -4"))));
   });
 
+  test('Numbers greater than 1000 should be ignored', () {
+    expect(calculator.add("2,1001"), 2);
+  });
+
+  test('Mix of numbers below and above 1000 should return sum of valid ones', () {
+    expect(calculator.add("1000,2,1001,3"), 1005);
+  });
+
+  test('All numbers above 1000 should return 0', () {
+    expect(calculator.add("1001,2000,3000"), 0);
+  });
+
+  test('Handling of new delimiters and large numbers together', () {
+    expect(calculator.add("//;\n1001;2;1000"), 1002);
+  });
+
   runApp(const MyApp());
 }
 
