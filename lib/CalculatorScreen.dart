@@ -43,7 +43,8 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                 border: OutlineInputBorder(),
                 labelText: 'Enter numbers (e.g., 1,2,3)',
               ),
-              keyboardType: TextInputType.text,
+              keyboardType: TextInputType.multiline,
+              maxLines: null,
             ),
             const SizedBox(height: 16),
             ElevatedButton(
