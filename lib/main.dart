@@ -39,6 +39,18 @@ void main() {
     expect(calculator.add("//***\n1***2***3"), 6);
   });
 
+  test('Negative numbers should throw exception', () {
+    expect(() => calculator.add("1,-2,3"), throwsA(predicate((e) => e.toString().contains("negatives not allowed: -2"))));
+  });
+
+  test('Multiple negative numbers should list all in exception', () {
+    expect(() => calculator.add("1,-2,-3,4"), throwsA(predicate((e) => e.toString().contains("negatives not allowed: -2, -3"))));
+  });
+
+  test('Mixed positive and negative numbers should throw exception', () {
+    expect(() => calculator.add("5,-1,2,-4"), throwsA(predicate((e) => e.toString().contains("negatives not allowed: -1, -4"))));
+  });
+
   runApp(const MyApp());
 }
 
