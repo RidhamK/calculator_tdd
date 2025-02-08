@@ -16,7 +16,8 @@ class StringCalculator {
     if (negatives.isNotEmpty) {
       throw Exception("negatives not allowed: ${negatives.join(', ')}");
     }
-    int sum = parts.where((num) => num.isNotEmpty).map(int.parse).reduce((a, b) => a + b);
+    nums = nums.where((num) => num <= 1000).toList();
+    int sum = nums.fold(0, (a, b) => a + b);
     return sum;
   }
 }
